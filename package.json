@@ -1,7 +1,11 @@
 {
   "name": "narrow-types",
   "version": "1.0.0",
-  "repository": "git@github.com:kristiandupont/narrow-types.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kristiandupont/narrow-types.git"
+  },
+  "homepage": "https://www.github.com/kristiandupont/narrow-types",
   "author": "Kristian Dupont <kristian@kristiandupont.com>",
   "license": "MIT",
   "main": "build/index.js",
