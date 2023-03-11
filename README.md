@@ -31,7 +31,7 @@ autoRoutes.post('/signup', async (ctx) => {
 });
 ```
 
-Great! You have a nice, clean, and easy to understand endpoint. We are certain that the email inserted is a valid email address and that the password is at least 8 characters. But what if we would like to extract a function for signing people up so it could be used elsewhere? We could do something like this:
+Great! You have a nice, clean endpoint. We are certain that the email inserted is a valid email address and that the password is at least 8 characters. But what if we would like to extract a function for signing people up so it could be used elsewhere? We could do something like this:
 
 ```typescript
 async function signup(
@@ -72,8 +72,10 @@ async function signup(
 Now, the type of `email` is `EmailString` which is a string that has been validated to be a valid email address. To use it, we modify our Zod schema and endpoint to look like this:
 
 ```typescript
+import { emailString } from 'narrow-types';
+
 const signupBody = z.object({
-  email: EmailString,
+  email: emailString,
   password: z.string().min(8),
 });
 
@@ -86,6 +88,58 @@ autoRoutes.post('/signup', async (ctx) => {
 });
 ```
 
-The `EmailString` type is just a branded string, incurring no runtime cost. It is just a way to tell Typescript that the string is a valid email address. This allows us to use the same type in both the endpoint and the function, and we can be sure that the email address is valid in both places.
+The `EmailString` type is just a branded string, incurring no runtime cost. It is just a way to tell Typescript that the string is a valid email address. This allows us to use the same type in both the endpoint and the function, and we can be sure that the email address is valid in both places. Any function that expects a plain string will accept an `EmailString` as well, but not the other way around.
 
 This library contains a number of types for common use cases, all compatible with Zod.
+
+If you want to add the same type of check for a type that is not included in this library, you can do so with the `Branded` type:
+
+```typescript
+import { z } from 'zod';
+
+import { Branded } from 'narrow-types';
+
+type PasswordString = Branded<string, 'PasswordString'>;
+const passwordString: z.Schema<PasswordString> = z.string().min(8) as any;
+```
+
+This creates a new type and the corresponding Zod schema.
+
+## Types
+
+### ID types
+
+- `UUIDString`
+- `CUIDString`
+- `CUID2String`
+- `ULIDString`
+
+### Network types
+
+- `EmailString`
+- `URLString`
+- `IPString`
+- `IPV4String`
+- `IPV6String`
+- `MACAddressString`
+
+### CSS types
+
+- `HexColorString`
+- `HexColorWithAlphaString`
+
+### Number types
+
+- `Integer`
+- `PositiveNumber`
+- `NegativeNumber`
+- `NonPositiveNumber`
+- `NonNegativeNumber`
+- `FiniteNumber`
+- `SafeNumber`
+
+### Misc types
+
+- `EmojiString`
+- `DateTimeString`
+- `JSONString`
