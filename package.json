@@ -1,0 +1,30 @@
+{
+  "name": "zod-types",
+  "version": "1.0.0",
+  "repository": "git@github.com:kristiandupont/zod-types.git",
+  "author": "Kristian Dupont <kristian@kristiandupont.com>",
+  "license": "MIT",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . -f visualstudio --report-unused-disable-directives --ext .js,.ts",
+    "test": "vitest run",
+    "version": "yarn build"
+  },
+  "devDependencies": {
+    "@kristiandupont/dev-deps": "^1.2.0"
+  },
+  "dependencies": {
+    "tsafe": "^1.4.3",
+    "zod": "^3.21.4"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "endOfLine": "auto"
+  }
+}
