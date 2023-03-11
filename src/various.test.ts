@@ -1,6 +1,7 @@
 import { assert } from 'tsafe';
 import { describe, expect, test } from 'vitest';
 import { z } from 'zod';
+import Branded from './Branded';
 
 import { hexColorString, hexColorWithAlphaString } from './css-string-types';
 import makeNarrowType from './makeNarrowType';
@@ -79,10 +80,8 @@ describe('custom validator types', () => {
     expect(i2).toBe(1);
   });
 
-  test('makeRefinedType', () => {
-    interface YoutubeUrl extends String {
-      readonly __tag: unique symbol;
-    }
+  test('makeNarrowType', () => {
+    type YoutubeUrl = Branded<string, 'YoutubeUrl'>;
     const youtubeUrl = makeNarrowType((value): value is YoutubeUrl =>
       /^(http(s)??:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([\w-])+$/gi.test(
         value as string
@@ -100,22 +99,23 @@ describe('custom validator types', () => {
     const account = z.object({
       name: z.string(),
       email: emailString,
-      password: z.string(),
       ipAddress: ipString,
     });
 
     const a = account.parse({
       name: 'John',
       email: 'john@example.com',
-      password: '123456',
       ipAddress: '192.168.1.1',
     });
 
     expect(a).toMatchObject({
       name: 'John',
       email: 'john@example.com',
-      password: '123456',
       ipAddress: '192.168.1.1',
     });
+
+    // Make sure we can assign to a plain string
+    const s: string = a.email;
+    expect(s).toBe('john@example.com');
   });
 });

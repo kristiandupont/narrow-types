@@ -1,20 +1,16 @@
 import { z } from 'zod';
 
-export interface EmojiString extends String {
-  readonly __tag: unique symbol;
-}
+import Branded from './Branded';
+
+export type EmojiString = Branded<number, 'EmojiString'>;
 export const emojiString: z.Schema<EmojiString> = z.string().emoji() as any;
 
-export interface DateTimeString extends String {
-  readonly __tag: unique symbol;
-}
+export type DateTimeString = Branded<number, 'DateTimeString'>;
 export const dateTimeString: z.Schema<DateTimeString> = z
   .string()
   .datetime() as any;
 
-export interface JsonString extends String {
-  readonly __tag: unique symbol;
-}
+export type JsonString = Branded<number, 'JsonString'>;
 export const jsonString: z.Schema<JsonString> = z.string().refine((value) => {
   try {
     JSON.parse(value);
