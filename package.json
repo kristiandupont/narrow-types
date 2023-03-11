@@ -16,7 +16,8 @@
     "version": "yarn build"
   },
   "devDependencies": {
-    "@kristiandupont/dev-deps": "^1.2.0"
+    "@kristiandupont/dev-deps": "^1.2.0",
+    "np": "^7.6.3"
   },
   "dependencies": {
     "tsafe": "^1.4.3",
@@ -26,5 +27,6 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "endOfLine": "auto"
-  }
+  },
+  "np": {}
 }
