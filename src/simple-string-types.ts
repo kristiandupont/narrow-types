@@ -10,8 +10,8 @@ export const dateTimeString: z.Schema<DateTimeString> = z
   .string()
   .datetime() as any;
 
-export type JsonString = Branded<number, 'JsonString'>;
-export const jsonString: z.Schema<JsonString> = z.string().refine((value) => {
+export type JSONString = Branded<number, 'JsonString'>;
+export const jsonString: z.Schema<JSONString> = z.string().refine((value) => {
   try {
     JSON.parse(value);
     return true;
