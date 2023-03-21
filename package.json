@@ -20,7 +20,7 @@
     "version": "yarn build"
   },
   "devDependencies": {
-    "@kristiandupont/dev-deps": "^1.2.0",
+    "@kristiandupont/dev-deps": "^1.3.0",
     "np": "^7.6.3"
   },
   "dependencies": {

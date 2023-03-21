@@ -1,8 +1,8 @@
 import { assert } from 'tsafe';
 import { describe, expect, test } from 'vitest';
 import { z } from 'zod';
-import Branded from './Branded';
 
+import Branded from './Branded';
 import { hexColorString, hexColorWithAlphaString } from './css-string-types';
 import makeNarrowType from './makeNarrowType';
 import {
