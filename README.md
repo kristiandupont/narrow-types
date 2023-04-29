@@ -2,6 +2,28 @@
 
 A collection of branded Typescript types, using [zod](https://github.com/colinhacks/zod/) as the underlying validation library.
 
+```typescript
+import { emailString, EmailString } from 'narrow-types';
+
+// The address parameter must be a validated email address
+function sendEmail(address: EmailString, subject: string) {
+  // ...
+}
+
+// This function accepts any string
+function logString(message: string) {
+  // ...
+}
+
+// myEmail is an EmailString
+const myEmail = emailString.parse('john@doe.com');
+
+sendEmail(myEmail, 'Hello'); // Works
+logString(myEmail); // Works as well. EmailStrings are strings as far as JS is concerned.
+
+sendEmail('john@doe', 'Hello'); // Error: address is not an EmailString
+```
+
 ## Installation
 
 ```bash
@@ -131,6 +153,9 @@ This creates a new type and the corresponding Zod schema.
 ### Number types
 
 - `Integer`
+- `Int2`
+- `Int4`
+- `Int8`
 - `PositiveNumber`
 - `NegativeNumber`
 - `NonPositiveNumber`
