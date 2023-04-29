@@ -1,15 +1,16 @@
 import { z } from 'zod';
 
-export interface HexColorString extends String {
-  readonly __tag: unique symbol;
-}
+import Branded from './Branded';
+
+export type HexColorString = Branded<string, 'HexColorString'>;
 export const hexColorString: z.Schema<HexColorString> = z
   .string()
-  .regex(/^#[\da-f]{6}$/i) as any;
+  .regex(/^#([\dA-Fa-f]{3}|[\dA-Fa-f]{6})$/) as any;
 
-export interface HexColorWithAlphaString extends String {
-  readonly __tag: unique symbol;
-}
+export type HexColorWithAlphaString = Branded<
+  string,
+  'HexColorWithAlphaString'
+>;
 export const hexColorWithAlphaString: z.Schema<HexColorWithAlphaString> = z
   .string()
-  .regex(/^#[\da-f]{8}$/i) as any;
+  .regex(/^#([\dA-Fa-f]{4}|[\dA-Fa-f]{8})$/) as any;
