@@ -1,4 +1,4 @@
-export { default as Braded } from './Branded';
+export { default as Branded } from './Branded';
 export * from './css-string-types';
 export * from './id-string-types';
 export { default as makeNarrowType } from './makeNarrowType';
