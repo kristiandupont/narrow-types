@@ -405,12 +405,12 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@kristiandupont/dev-deps@^1.5.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@kristiandupont/dev-deps/-/dev-deps-1.9.0.tgz#28ed43ce4f31f6af5c6f896486841cecc314aa01"
-  integrity sha512-b86KPTf1a3PV93Cz9/qKy4WMhmdkYay9vasYA21GuVRnzzhNCZUoYYD+Kity2q+6tkIoJp1SiRtaiPxrWkp3Mg==
+"@kristiandupont/dev-deps@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@kristiandupont/dev-deps/-/dev-deps-2.0.0.tgz#3eab31b4e67e4b28aebd59163a0884813b98202d"
+  integrity sha512-cSg8tTAiJFxVPZKSI+/PAQhmBovL2qulAosfiRdH4IXXXl7m+k62AYiy/RSL8R3S0MYb14xBmgaKIPxSNDxKlQ==
   dependencies:
-    "@kristiandupont/eslint-config" "^2.1.0"
+    "@kristiandupont/eslint-config" "^2.2.0"
     "@kristiandupont/prettier-config" "^1.2.0"
     eslint "^8.29.0"
     prettier "^2.8.1"
@@ -418,7 +418,7 @@
     vite "^4.0.1"
     vitest "^0.31.0"
 
-"@kristiandupont/eslint-config@^2.1.0":
+"@kristiandupont/eslint-config@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@kristiandupont/eslint-config/-/eslint-config-2.2.0.tgz#42c55a08768681bb2bcd778505a2bcc306c463c1"
   integrity sha512-XjT1R/41AJKpbtzW2pv/KasA+k23ePluDSCm1rPDlU+DqMqjTagP7ZgTB67mpzQ72dEcItZ0H/gRbnUs8/bLHQ==
