@@ -17,7 +17,7 @@
     "build": "tsc",
     "lint": "eslint . -f visualstudio --report-unused-disable-directives --ext .js,.ts",
     "test": "vitest run",
-    "version": "yarn build"
+    "version": "npm run build"
   },
   "devDependencies": {
     "@kristiandupont/dev-deps": "^2.0.0",
