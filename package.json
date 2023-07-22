@@ -28,5 +28,8 @@
     "zod": "^3.21.4"
   },
   "prettier": "@kristiandupont/prettier-config",
-  "np": {}
+  "np": {},
+  "engines": {
+    "node": ">=16"
+  }
 }
