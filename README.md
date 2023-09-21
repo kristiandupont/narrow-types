@@ -129,6 +129,23 @@ This creates a new type and the corresponding Zod schema.
 
 ## Types
 
+### Simple Number types
+
+- `Integer`
+- `Int2`
+- `Int4`
+- `Int8`
+- `PositiveNumber`
+- `NegativeNumber`
+- `NonPositiveNumber`
+- `NonNegativeNumber`
+- `FiniteNumber`
+- `SafeNumber`
+
+### Simple String types
+
+- `NonEmptyString`
+
 ### ID types
 
 - `UUIDString`
@@ -149,19 +166,6 @@ This creates a new type and the corresponding Zod schema.
 
 - `HexColorString`
 - `HexColorWithAlphaString`
-
-### Number types
-
-- `Integer`
-- `Int2`
-- `Int4`
-- `Int8`
-- `PositiveNumber`
-- `NegativeNumber`
-- `NonPositiveNumber`
-- `NonNegativeNumber`
-- `FiniteNumber`
-- `SafeNumber`
 
 ### Misc types
 
