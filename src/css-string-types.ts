@@ -1,15 +1,15 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import Branded from './Branded';
+import Branded from "./Branded";
 
-export type HexColorString = Branded<string, 'HexColorString'>;
+export type HexColorString = Branded<string, "HexColorString">;
 export const hexColorString: z.Schema<HexColorString> = z
   .string()
   .regex(/^#([\dA-Fa-f]{3}|[\dA-Fa-f]{6})$/) as any;
 
 export type HexColorWithAlphaString = Branded<
   string,
-  'HexColorWithAlphaString'
+  "HexColorWithAlphaString"
 >;
 export const hexColorWithAlphaString: z.Schema<HexColorWithAlphaString> = z
   .string()

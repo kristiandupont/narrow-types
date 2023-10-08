@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const makeNarrowType = <T>(
   predicate: (value: unknown) => value is T,

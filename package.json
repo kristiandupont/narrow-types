@@ -20,14 +20,13 @@
     "version": "npm run build"
   },
   "devDependencies": {
-    "@kristiandupont/dev-deps": "^2.0.0",
+    "@kristiandupont/dev-deps": "^2.11.0",
     "np": "^8.0.0"
   },
   "dependencies": {
     "tsafe": "^1.4.3",
     "zod": "^3.21.4"
   },
-  "prettier": "@kristiandupont/prettier-config",
   "np": {},
   "engines": {
     "node": ">=16"
