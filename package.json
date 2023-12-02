@@ -20,7 +20,7 @@
     "version": "npm run build"
   },
   "devDependencies": {
-    "@kristiandupont/dev-deps": "^2.11.0",
+    "@kristiandupont/dev-deps": "^2.16.0",
     "np": "^9.0.0"
   },
   "dependencies": {
