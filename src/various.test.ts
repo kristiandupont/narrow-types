@@ -84,8 +84,8 @@ describe("custom validator types", () => {
     type YoutubeUrl = Branded<string, "YoutubeUrl">;
     const youtubeUrl = makeNarrowType((value): value is YoutubeUrl =>
       /^(http(s)??:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([\w-])+$/gi.test(
-        value as string
-      )
+        value as string,
+      ),
     );
 
     const u1 = youtubeUrl.parse("https://www.youtube.com/watch?v=1234567890");
