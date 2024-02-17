@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import Branded from "./Branded";
+import type Branded from "./Branded";
 
 export type EmailString = Branded<string, "EmailString">;
 export const emailString: z.Schema<EmailString> = z.string().email() as any;

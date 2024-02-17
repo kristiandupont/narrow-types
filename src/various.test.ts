@@ -2,7 +2,7 @@ import { assert } from "tsafe";
 import { describe, expect, test } from "vitest";
 import { z } from "zod";
 
-import Branded from "./Branded";
+import type Branded from "./Branded";
 import { hexColorString, hexColorWithAlphaString } from "./css-string-types";
 import makeNarrowType from "./makeNarrowType";
 import {
@@ -10,7 +10,7 @@ import {
   ipString,
   macAddressString,
 } from "./network-string-types";
-import { Integer, integer } from "./simple-number-types";
+import { type Integer, integer } from "./simple-number-types";
 import { jsonString } from "./simple-string-types";
 
 describe("custom validator types", () => {
@@ -84,8 +84,8 @@ describe("custom validator types", () => {
     type YoutubeUrl = Branded<string, "YoutubeUrl">;
     const youtubeUrl = makeNarrowType((value): value is YoutubeUrl =>
       /^(http(s)??:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([\w-])+$/gi.test(
-        value as string,
-      ),
+        value as string
+      )
     );
 
     const u1 = youtubeUrl.parse("https://www.youtube.com/watch?v=1234567890");

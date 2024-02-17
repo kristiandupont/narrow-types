@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import Branded from "./Branded";
+import type Branded from "./Branded";
 
 export type Integer = Branded<number, "Integer">;
 export const integer: z.Schema<Integer> = z.number().int() as any;
