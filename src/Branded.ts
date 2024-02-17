@@ -1,4 +1,4 @@
-import { BRAND } from "zod";
+import type { BRAND } from "zod";
 
 type Branded<T, Tag extends string | number | symbol> = T & BRAND<Tag>;
 

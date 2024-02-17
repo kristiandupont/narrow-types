@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import Branded from "./Branded";
+import type Branded from "./Branded";
 
 export type UUIDString = Branded<string, "UUIDString">;
 export const uuidString: z.Schema<UUIDString> = z.string().uuid() as any;

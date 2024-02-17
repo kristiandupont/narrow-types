@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import Branded from "./Branded";
+import type Branded from "./Branded";
 
 export type HexColorString = Branded<string, "HexColorString">;
 export const hexColorString: z.Schema<HexColorString> = z
