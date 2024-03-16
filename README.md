@@ -53,14 +53,14 @@ autoRoutes.post("/signup", async (ctx) => {
 });
 ```
 
-Great! You have a nice, clean endpoint. We are certain that the email inserted is a valid email address and that the password is at least 8 characters. But what if we would like to extract a function for signing people up so it could be used elsewhere? We could do something like this:
+Great! You have a nice, clean endpoint. You are certain that the email inserted is a valid email address and that the password is at least 8 characters. But what if you would like to extract a function for signing people up so it could be used elsewhere? You could do something like this:
 
 ```typescript
 async function signup(
   db: Database,
   site: string,
   email: string,
-  password: string,
+  password: string
 ) {
   db.accounts.insert({
     site,
@@ -70,7 +70,7 @@ async function signup(
 }
 ```
 
-and call that. But now we are no longer sure that the provided email is valid. We could move the Zod validation step into the function, but if we want to keep it in the endpoint as well for some reason, we will now be validating twice at runtime which is a performance cost, and not very pretty either.
+and call that. But now you are no longer sure that the provided email is valid. You could move the Zod validation step into the function, but if you want to keep it in the endpoint as well for some reason, you will now be validating twice at runtime which is a performance cost, and not very pretty either.
 
 Instead, you can use the `EmailString` type from this library:
 
@@ -81,7 +81,7 @@ async function signup(
   db: Database,
   site: string,
   email: EmailString,
-  password: string,
+  password: string
 ) {
   db.accounts.insert({
     site,
@@ -101,7 +101,7 @@ const signupBody = z.object({
   password: z.string().min(8),
 });
 
-autoRoutes.post("/signup", async (ctx) => {
+authRoutes.post("/signup", async (ctx) => {
   const body = signupBody.parse(ctx.req.body);
 
   signup(ctx.state.db, ctx.state.site, body.email, body.password);
@@ -113,19 +113,6 @@ autoRoutes.post("/signup", async (ctx) => {
 The `EmailString` type is just a branded string, incurring no runtime cost. It is just a way to tell Typescript that the string is a valid email address. This allows us to use the same type in both the endpoint and the function, and we can be sure that the email address is valid in both places. Any function that expects a plain string will accept an `EmailString` as well, but not the other way around.
 
 This library contains a number of types for common use cases, all compatible with Zod.
-
-If you want to add the same type of check for a type that is not included in this library, you can do so with the `Branded` type:
-
-```typescript
-import { z } from "zod";
-
-import { Branded } from "narrow-types";
-
-type PasswordString = Branded<string, "PasswordString">;
-const passwordString: z.Schema<PasswordString> = z.string().min(8) as any;
-```
-
-This creates a new type and the corresponding Zod schema.
 
 ## Types
 
@@ -161,6 +148,7 @@ This creates a new type and the corresponding Zod schema.
 - `IPV4String`
 - `IPV6String`
 - `MACAddressString`
+- `JwtString`
 
 ### CSS types
 

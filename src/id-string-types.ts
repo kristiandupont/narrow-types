@@ -1,15 +1,13 @@
 import { z } from "zod";
 
-import type Branded from "./Branded";
+export const uuidString = z.string().uuid().brand("UUIDString");
+export type UUIDString = z.infer<typeof uuidString>;
 
-export type UUIDString = Branded<string, "UUIDString">;
-export const uuidString: z.Schema<UUIDString> = z.string().uuid() as any;
+export const cuidString = z.string().cuid().brand("CUIDString");
+export type CUIDString = z.infer<typeof cuidString>;
 
-export type CUIDString = Branded<string, "CUIDString">;
-export const cuidString: z.Schema<CUIDString> = z.string().cuid() as any;
+export const cuid2String = z.string().cuid2().brand("CUID2String");
+export type CUID2String = z.infer<typeof cuid2String>;
 
-export type CUID2String = Branded<string, "CUID2String">;
-export const cuid2String: z.Schema<CUIDString> = z.string().cuid2() as any;
-
-export type ULIDString = Branded<string, "ULIDString">;
-export const ulidString: z.Schema<ULIDString> = z.string().ulid() as any;
+export const ulidString = z.string().ulid().brand("ULIDString");
+export type ULIDString = z.infer<typeof ulidString>;

@@ -1,52 +1,46 @@
 import { z } from "zod";
 
-import type Branded from "./Branded";
+export const integer = z.number().int().brand("Integer");
+export type Integer = z.infer<typeof integer>;
 
-export type Integer = Branded<number, "Integer">;
-export const integer: z.Schema<Integer> = z.number().int() as any;
+export const int2 = z.number().int().min(-32_768).max(32_767).brand("Int2");
+export type Int2 = z.infer<typeof int2>;
 
-export type Int2 = Branded<number, "Int2">;
-export const int2: z.Schema<Int2> = z
-  .number()
-  .int()
-  .min(-32_768)
-  .max(32_767) as any;
-
-export type Int4 = Branded<number, "Int4">;
-export const int4: z.Schema<Int4> = z
+export const int4 = z
   .number()
   .int()
   .min(-2_147_483_648)
-  .max(2_147_483_647) as any;
+  .max(2_147_483_647)
+  .brand("Int4");
+export type Int4 = z.infer<typeof int4>;
 
-export type Int8 = Branded<bigint, "Int8">;
-export const int8: z.Schema<Int8> = z
+export const int8 = z
   .bigint()
   .min(-9_223_372_036_854_775_808n)
-  .max(9_223_372_036_854_775_807n) as any;
+  .max(9_223_372_036_854_775_807n)
+  .brand("Int8");
+export type Int8 = z.infer<typeof int8>;
 
-export type PositiveNumber = Branded<number, "PositiveNumber">;
-export const positiveNumber: z.Schema<PositiveNumber> = z
+export const positiveNumber = z.number().positive().brand("PositiveNumber");
+export type PositiveNumber = z.infer<typeof positiveNumber>;
+
+export const negativeNumber = z.number().negative().brand("NegativeNumber");
+export type NegativeNumber = z.infer<typeof negativeNumber>;
+
+export const nonPositiveNumber = z
   .number()
-  .positive() as any;
+  .nonpositive()
+  .brand("NonPositiveNumber");
+export type NonPositiveNumber = z.infer<typeof nonPositiveNumber>;
 
-export type NegativeNumber = Branded<number, "NegativeNumber">;
-export const negativeNumber: z.Schema<NegativeNumber> = z
+export const nonNegativeNumber = z
   .number()
-  .negative() as any;
+  .nonnegative()
+  .brand("NonNegativeNumber");
+export type NonNegativeNumber = z.infer<typeof nonNegativeNumber>;
 
-export type NonPositiveNumber = Branded<number, "NonPositiveNumber">;
-export const nonPositiveNumber: z.Schema<NonPositiveNumber> = z
-  .number()
-  .nonpositive() as any;
+export const finiteNumber = z.number().finite().brand("FiniteNumber");
+export type FiniteNumber = z.infer<typeof finiteNumber>;
 
-export type NonNegativeNumber = Branded<number, "NonNegativeNumber">;
-export const nonNegativeNumber: z.Schema<NonNegativeNumber> = z
-  .number()
-  .nonnegative() as any;
-
-export type FiniteNumber = Branded<number, "FiniteNumber">;
-export const finiteNumber: z.Schema<FiniteNumber> = z.number().finite() as any;
-
-export type SafeNumber = Branded<number, "SafeNumber">;
-export const safeNumber: z.Schema<SafeNumber> = z.number().safe() as any;
+export const safeNumber = z.number().safe().brand("SafeNumber");
+export type SafeNumber = z.infer<typeof safeNumber>;

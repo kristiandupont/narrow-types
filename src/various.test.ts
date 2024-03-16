@@ -2,9 +2,7 @@ import { assert } from "tsafe";
 import { describe, expect, test } from "vitest";
 import { z } from "zod";
 
-import type Branded from "./Branded";
 import { hexColorString, hexColorWithAlphaString } from "./css-string-types";
-import makeNarrowType from "./makeNarrowType";
 import {
   emailString,
   ipString,
@@ -78,21 +76,6 @@ describe("custom validator types", () => {
     let i2: Integer = integer.parse(2);
     i2 = i1;
     expect(i2).toBe(1);
-  });
-
-  test("makeNarrowType", () => {
-    type YoutubeUrl = Branded<string, "YoutubeUrl">;
-    const youtubeUrl = makeNarrowType((value): value is YoutubeUrl =>
-      /^(http(s)??:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([\w-])+$/gi.test(
-        value as string,
-      ),
-    );
-
-    const u1 = youtubeUrl.parse("https://www.youtube.com/watch?v=1234567890");
-    assert<typeof u1 extends YoutubeUrl ? true : false>();
-    expect(u1).toBe("https://www.youtube.com/watch?v=1234567890");
-
-    expect(() => youtubeUrl.parse("https://www.google.com")).toThrow();
   });
 
   test("Combine", () => {
