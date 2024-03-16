@@ -25,3 +25,8 @@ export type MacAddressString = Branded<string, "MacAddressString">;
 export const macAddressString: z.Schema<MacAddressString> = z
   .string()
   .regex(/^([\dA-Fa-f]{2}[:-]){5}([\dA-Fa-f]{2})$/) as any;
+
+export type JwtString = Branded<string, "JwtString">;
+export const jwtString: z.Schema<JwtString> = z
+  .string()
+  .regex(/^([A-Za-z0-9-_]+\.){2}[A-Za-z0-9-_]+$/) as any;
