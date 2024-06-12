@@ -1,32 +1,28 @@
 import { z } from "zod";
 
-import type Branded from "./Branded";
+export const emailString = z.string().email().brand("EmailString");
+export type EmailString = z.infer<typeof emailString>;
 
-export type EmailString = Branded<string, "EmailString">;
-export const emailString: z.Schema<EmailString> = z.string().email() as any;
+export const urlString = z.string().url().brand("UrlString");
+export type UrlString = z.infer<typeof urlString>;
 
-export type URLString = Branded<string, "URLString">;
-export const urlString: z.Schema<URLString> = z.string().url() as any;
+export const ipString = z.string().ip().brand("IpString");
+export type IpString = z.infer<typeof ipString>;
 
-export type IPString = Branded<string, "IPString">;
-export const ipString: z.Schema<IPString> = z.string().ip() as any;
+export const ipV4String = z.string().ip({ version: "v4" }).brand("IpV4String");
+export type IpV4String = z.infer<typeof ipV4String>;
 
-export type IPV4String = Branded<string, "IPV4String">;
-export const ipV4String: z.Schema<IPV4String> = z
+export const ipV6String = z.string().ip({ version: "v6" }).brand("IpV6String");
+export type IpV6String = z.infer<typeof ipV6String>;
+
+export const macAddressString = z
   .string()
-  .ip({ version: "v4" }) as any;
+  .regex(/^([\dA-Fa-f]{2}[:-]){5}([\dA-Fa-f]{2})$/)
+  .brand("MacAddressString");
+export type MacAddressString = z.infer<typeof macAddressString>;
 
-export type IPV6String = Branded<string, "IPV6String">;
-export const ipV6String: z.Schema<IPV6String> = z
+export const jwtString = z
   .string()
-  .ip({ version: "v6" }) as any;
-
-export type MacAddressString = Branded<string, "MacAddressString">;
-export const macAddressString: z.Schema<MacAddressString> = z
-  .string()
-  .regex(/^([\dA-Fa-f]{2}[:-]){5}([\dA-Fa-f]{2})$/) as any;
-
-export type JwtString = Branded<string, "JwtString">;
-export const jwtString: z.Schema<JwtString> = z
-  .string()
-  .regex(/^([A-Za-z0-9-_]+\.){2}[A-Za-z0-9-_]+$/) as any;
+  .regex(/^([A-Za-z0-9-_]+\.){2}[A-Za-z0-9-_]+$/)
+  .brand("JwtString");
+export type JwtString = z.infer<typeof jwtString>;
