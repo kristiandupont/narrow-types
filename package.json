@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "lint": "eslint . -f visualstudio --report-unused-disable-directives --ext .js,.ts",
+    "lint": "eslint . --report-unused-disable-directives",
     "test": "vitest run",
     "version": "npm run build"
   },
