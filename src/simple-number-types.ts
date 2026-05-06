@@ -38,9 +38,3 @@ export const nonNegativeNumber = z
   .nonnegative()
   .brand("NonNegativeNumber");
 export type NonNegativeNumber = z.infer<typeof nonNegativeNumber>;
-
-export const finiteNumber = z.number().finite().brand("FiniteNumber");
-export type FiniteNumber = z.infer<typeof finiteNumber>;
-
-export const safeNumber = z.number().safe().brand("SafeNumber");
-export type SafeNumber = z.infer<typeof safeNumber>;
