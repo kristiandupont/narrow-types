@@ -20,7 +20,7 @@
     "version": "npm run build"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.7",
+    "@eslint/compat": "^2.0.0",
     "@kristiandupont/dev-deps": "^2.32.0",
     "np": "^10.0.0",
     "zod": "^4.4.3"
